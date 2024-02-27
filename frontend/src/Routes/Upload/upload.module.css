@@ -1,0 +1,13 @@
+.container{
+    width: 97%;
+    height: 76vh ;
+    background-color: #1C2536;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container input{
+    color: #CDD0D6;
+}

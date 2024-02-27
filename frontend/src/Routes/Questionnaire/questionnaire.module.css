@@ -1,0 +1,137 @@
+.left{
+    width: 40vw;
+    height: 100vh;
+    background-color: #1C2536;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.right{
+
+    width: 60vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: scroll;
+    gap: 3rem;
+}
+
+.main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.left h2{
+    color: #CDD0D6;
+    font-family: Black Han Sans;
+}
+
+.logo{
+    width: 9rem;
+    aspect-ratio: 1/1;
+}
+
+select {
+    width: 35vw;
+    padding: 10px; 
+    font-size: 16px; 
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+    background-color: #1C2536; 
+    color: #787F8C; 
+    border: none;
+  }
+
+
+.inputs{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.inputs textarea {
+    width: 18.5rem;
+    border-radius: 10px;
+    background-color: #1C2536;
+    border: none;
+    color: #787F8C;
+    padding: 1rem;
+}
+
+.upper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    margin-top: 5rem;
+}
+
+.questions{
+    color: #CDD0D6;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.radios{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 4rem;
+}
+
+
+
+.lower{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 58%;
+}
+.signupButton{
+    background-color: #4D4C98;
+    color: white;
+    border-radius: 12px ;
+    width: 6rem;
+    height: 2rem;
+}
+
+.buttonDiv{
+    width: 60%;
+    display: flex;
+    justify-content: start;
+    padding-bottom: 2rem;
+}
+
+.input{
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+    gap: .5rem;
+    margin-top: 1.5rem;
+}
+
+.input input{
+    width: 35vw;
+    padding: 10px; 
+    font-size: 16px; 
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+    background-color: #1C2536; 
+    color: #787F8C; 
+    border: none;
+}
+
+.input label{
+    color: #B6BFD0;
+}
+

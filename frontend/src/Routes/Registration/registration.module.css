@@ -1,0 +1,99 @@
+.main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.left{
+    width: 80vw;
+    height: 100vh;
+    background-color: #1C2536;
+    border-radius: 2rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.right{
+    color: #CDD0D6;
+    width: 60vw;
+    height: 100vh;
+    background-color: #151928;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+}
+
+.insideRight{
+    color: #CDD0D6;
+}
+
+.input{
+    background-color: #1C2536;
+    border: none;
+    color: #787F8C;
+    width: 20rem;
+    height: 2rem;
+    border-radius: 10px;
+    padding-left: 10px;
+}
+
+.header h1{
+    font-size: 36px;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: start;
+    gap: 1rem;
+}
+
+.header p{
+    color: #6C9F96;
+}
+
+.inputContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap: 10px;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.signupButton{
+    background-color: #4D4C98;
+    color: white;
+    border-radius: 12px ;
+    width: 6rem;
+    height: 2rem;
+}
+
+.buttonDiv{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+
+.logo{
+    width: 9rem;
+    aspect-ratio: 1/1;
+}
+
+.left h2{
+    color: #CDD0D6;
+    font-family: Black Han Sans;
+}
+
