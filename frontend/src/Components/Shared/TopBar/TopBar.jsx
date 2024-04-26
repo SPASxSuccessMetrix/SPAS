@@ -6,8 +6,15 @@ import axios from "axios"
 import { logout, setUsername } from "../../../redux/slices/userSlice";
 import { url } from "../../../api";
 import {useNavigate} from "react-router"
+import { useEffect } from "react";
 
 const TopBar = () => {
+
+
+  useEffect(() => {
+
+  })
+
   const getCurrentFormattedDate = () => {
     const currentDate = new Date();
 
@@ -29,6 +36,12 @@ const TopBar = () => {
   const navigate = useNavigate()
 
   const isLoggedIn = useSelector(state => state.user.isLoggedIn)
+
+  useEffect(() => {
+    if(!isLoggedIn){
+      navigate("/")
+    }
+  })
 
   const logoutHandler = async () => {
     try{

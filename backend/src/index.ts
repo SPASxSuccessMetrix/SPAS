@@ -26,7 +26,7 @@ const mongoDBURL = process.env.MONGO_URL
 
 
 app.get("/", (req:Request, res:Response) => {
-    res.send("Hello World!")
+    res.send("Backend Connected!")
 })
 
 //Connect to MongoDB
