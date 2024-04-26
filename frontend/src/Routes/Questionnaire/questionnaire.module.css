@@ -135,3 +135,22 @@ select {
     color: #B6BFD0;
 }
 
+.section1 {
+    color: #CDD0D6;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.title{
+    color: #CDD0D6;
+    width: 100%;
+    border: solid;
+}
+
+.sec1Questions {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+

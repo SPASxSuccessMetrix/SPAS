@@ -1,56 +1,54 @@
 /* eslint-disable react/no-unescaped-entities */
-//Wow
 
 import { useState } from "react";
 import styles from "./questionnaire.module.css";
 import { Button } from "@mui/material";
 import axios from "axios";
 import { url } from "../../api";
-import TopBar from "../../Components/Shared/TopBar/TopBar";
-import SideBar from "../../Components/Shared/SideBar/SideBar";
+
+import { learningPreferences, questions } from "../../../data";
 
 const Questionnaire = () => {
-  // let questions = [
-  //   "Student engages actively in classroom activities",
-  //   "Student prefers not to speak excessively during lessons",
-  //   "Student interacts with various classmates during group activities",
-  //   "Student tends to be reserved and quiet in class",
-  //   "Student shows empathy and understanding towards classmates",
-  //   "Student understands the emotions of peers",
-  //   "Student doesn't actively seek interactions with fellow students",
-  //   "Student is attentive to and concerned about classmates' concerns",
-  //   "Student completes assignments and tasks promptly",
-  //   "Student tends to keep classroom materials organized",
-  //   "Student prefers a structured and orderly classroom environment",
-  //   "Student occasionally struggles with keeping classroom materials organized",
-  //   "Student experiences frequent changes in mood during class",
-  //   "Student remains relaxed and composed in classroom situations",
-  //   "Student rarely experiences feelings of sadness while at school",
-  //   "Student is sensitive and occasionally becomes upset during lessons",
-  //   "Student demonstrates creativity and imagination in assigned work",
-  //   "Student exhibits interest in abstract and complex academic concepts",
-  //   "Student finds it challenging to grasp abstract academic concepts",
-  //   "Student struggles to generate imaginative ideas for school projects",
-  // ];
 
-  let questions = [
-    "Student engages actively in classroom activities",
-    "Student prefers not to speak excessively during lessons",
-    "Student interacts with various classmates during group activities"
-  ];
 
   const radioValues = [1,2,3,4,5];
 
+
+
   const [studentName, setStudentName] = useState("");
   const [enrollment, setEnrollment] = useState("");
+  const [gender, setGender] = useState("")
   const [questionData, setQuestionData] = useState({})
+  const [sec1Questions, setSec1Questions] = useState({})
+
 
   const submitHandler = async () => {
     const body = {
       studentName,
       enrollment: enrollment.toUpperCase(),
+      gender,
+      sec1Questions,
       questionData
     }
+
+    if(enrollment === ""){
+      alert("Please enter your enrollment Number!")
+      return
+    }else if(studentName === ""){
+      alert("Please enter your name!")
+      return
+    }else if(gender === ""){
+      alert("Please select your gender!")
+      return
+    }
+
+    const sec1Keys = Object.keys(sec1Questions);
+    const questionDataKeys = Object.keys(questionData);
+    if(sec1Keys.length !== learningPreferences.length || questionDataKeys.length !== questions.length){
+      alert("Please Select All the Questions!")
+      return
+    }
+
     try{
       const response = await axios.post(`${url}/questions/insert`, body, {withCredentials: true});
       alert("Data submitted successfully!")
@@ -58,7 +56,6 @@ const Questionnaire = () => {
       alert(err.response.data)
     }
   }
-
 
 
   return (
@@ -69,25 +66,6 @@ const Questionnaire = () => {
       </div>
       <div className={styles.right}>
         <div className={styles.upper}>
-          {/* <select name="studentName">
-            <option value="" disabled selected>
-              Student's Name
-            </option>
-            <option value="aryan">Aryan Saxena</option>
-            <option value="krishnaprasad">Krishnaprasad Awala</option>
-            <option value="gunjan">Gunjan Sharma</option>
-            <option value="amaan">Amaan Shaikh</option>
-            <option value="gagandeep">Gagandeep Bhatia</option>
-            <option value="tushar">Tushar Kumar Tailor</option>
-          </select> */}
-          {/* <div className={styles.inputs}>
-            <textarea rows="4" cols="50">
-              Traits
-            </textarea>
-            <textarea rows="4" cols="50">
-              Achievements
-            </textarea>
-          </div> */}
           <div className={styles.inputContainer}>
             <div className={styles.input}>
             <label htmlFor="">Student's Name</label>
@@ -97,7 +75,36 @@ const Questionnaire = () => {
             <label htmlFor="">Student's Enrollment No.</label>
             <input onChange={(e) => setEnrollment(e.target.value)} type="text" placeholder="Enrollment no." />
             </div>
+            <div className={styles.input}>
+              <label >Gender</label>
+              <select value={gender} onChange={(e) => setGender(e.target.value)} >
+                <option >Select your gender</option>
+                <option >Female</option>
+                <option >Male</option>
+                <option >Non Binary</option>
+                <option >Prefer not to say</option>
+              </select>
+            </div>
           </div>
+        </div>
+ {/* Section 2 */}
+        <div className={styles.section1}>
+          {
+            learningPreferences.map((item) => {
+              return(
+                <div className={styles.sec1Questions} key={item?.id}>
+                  <p>{item?.question}</p>
+                  <select onChange={(e) => setSec1Questions({...sec1Questions, [item.question]: e.target.value})}>
+                    {
+                      item?.options?.map((option) => {
+                        return <option>{option}</option>
+                      })
+                    }
+                  </select>
+                </div>
+              )
+            })
+          }
         </div>
         <div className={styles.lower}>
           {questions.map((question, i) => {
