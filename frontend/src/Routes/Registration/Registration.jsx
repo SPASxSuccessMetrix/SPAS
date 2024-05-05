@@ -6,7 +6,7 @@ import { Button } from "@mui/material";
 import axios from "axios";
 import { url } from "../../api";
 import {useDispatch} from "react-redux"
-import { login } from "../../redux/slices/userSlice";
+import { login, setRole } from "../../redux/slices/userSlice";
 import { Link } from "react-router-dom";
 
 const Registration = () => {
@@ -32,6 +32,7 @@ const Registration = () => {
       console.log(response);
       alert("Signup successful!");
       dispatch(login())
+      dispatch(setRole(response?.data?.role))
       navigate("/home");
     }catch(err){
       console.log(err)

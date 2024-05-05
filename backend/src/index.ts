@@ -9,8 +9,10 @@ import questionRouter from "./routes/questions"
 import uploadRouter from "./routes/upload"
 
 const app = express()
+
+const allowedOrigins = ['http://localhost:5173', 'https://successmetrix.vercel.app'];
 app.use(cors({
-    origin: "http://localhost:5173",
+    origin: allowedOrigins,
     credentials: true
 }))
 app.use(express.json())

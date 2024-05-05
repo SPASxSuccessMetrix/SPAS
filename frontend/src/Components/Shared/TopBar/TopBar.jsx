@@ -1,19 +1,14 @@
 import styles from "./TopBar.module.css";
-import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import { Button } from "@mui/material";
 import {useSelector, useDispatch} from "react-redux"
 import axios from "axios"
 import { logout, setUsername } from "../../../redux/slices/userSlice";
 import { url } from "../../../api";
 import {useNavigate} from "react-router"
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const TopBar = () => {
 
-
-  useEffect(() => {
-
-  })
 
   const getCurrentFormattedDate = () => {
     const currentDate = new Date();
@@ -35,7 +30,8 @@ const TopBar = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  const isLoggedIn = useSelector(state => state.user.isLoggedIn)
+  const isLoggedIn = useSelector(state => state.user.isLoggedIn);
+  const isProfessor = useSelector((state) => state?.user?.isProfessor);
 
   useEffect(() => {
     if(!isLoggedIn){
@@ -74,7 +70,7 @@ const TopBar = () => {
         <p>{formattedDate}</p>
         <div className={styles.navLinks}>
           <img src="/Icons/darkmode.svg" alt="Toggle" />
-          <img onClick={() => navigate("/upload")} src="/Icons/upload.svg" alt="upload" />
+          {isProfessor && <img onClick={() => navigate("/upload")} src="/Icons/upload.svg" alt="upload" /> }
           {/* <img src="/Icons/account.svg" alt="logout" /> */}
           {isLoggedIn && <Button onClick={logoutHandler} sx={{color: "#b6bfd0"}}>Logout</Button>}
         </div>

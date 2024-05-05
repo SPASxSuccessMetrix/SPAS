@@ -4,7 +4,8 @@ export const userSlice = createSlice({
     name: 'user',
     initialState: {
         username: "",
-        isLoggedIn: false
+        isLoggedIn: false,
+        isProfessor: false
     },
     reducers: {
         setUsername: (state, action) => {
@@ -15,9 +16,16 @@ export const userSlice = createSlice({
         },
         logout: (state) => {
             state.isLoggedIn = false;
+        },
+        setRole: (state, action) => {
+            if (action.payload === 'professor'){
+                state.isProfessor = true;
+            }else{
+                state.isProfessor = false;
+            }
         }
     }
 })
 
-export const {setUsername, login, logout} = userSlice.actions;
+export const {setUsername, login, logout, setRole} = userSlice.actions;
 export default userSlice.reducer

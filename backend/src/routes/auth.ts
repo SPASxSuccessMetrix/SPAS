@@ -59,8 +59,13 @@ router.get("/logout", (req: Request, res: Response) => {
   res.status(200).json("Logout successful!");
 });
 
-router.get("/me", verifyJWT, (req: CustomRequestVerify, res: Response) => {
-  res.send(req.user);
+router.get("/me", verifyJWT, async (req: CustomRequestVerify, res: Response) => {
+  try{
+    const user = await User.findOne({name: req?.user});
+    res.status(200).send(user)
+  }catch(err){
+    res.status(400).send(err)
+  }
 });
 
 export default router;

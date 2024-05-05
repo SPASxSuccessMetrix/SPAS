@@ -6,7 +6,7 @@ import { Button } from "@mui/material";
 import axios from "axios";
 import { url } from "../../api";
 import {useDispatch} from "react-redux"
-import { login } from "../../redux/slices/userSlice";
+import { login, setRole } from "../../redux/slices/userSlice";
 import { Link } from "react-router-dom";
 
 const Login = () => {
@@ -27,6 +27,7 @@ const Login = () => {
       console.log(response);
       alert("login successful!");
       dispatch(login())
+      dispatch(setRole(response?.data?.role))
       navigate("/home");
     }catch(err){
       console.log(err);
@@ -47,7 +48,7 @@ const Login = () => {
             Don't have an account ? <Link style={{color: "#6C9F96"}} to={"/signup"}>Sign up</Link>
           </p>
         </div>
-        <form className={styles.container}>
+        <form onSubmit={submitRequest} className={styles.container}>
           <div className={styles.inputContainer}>
             <h3>Email</h3>
             <input
@@ -56,6 +57,7 @@ const Login = () => {
               className={styles.input}
               type="email"
               placeholder="Enter Your email"
+              required
             />
           </div>
           <div className={styles.inputContainer}>
@@ -66,10 +68,11 @@ const Login = () => {
               className={styles.input}
               type="password"
               placeholder="Enter your password"
+              required
             />
           </div>
           <div className={styles.buttonDiv}>
-            <Button type="submit" onClick={submitRequest} className={styles.signupButton} variant="contained">
+            <Button type="submit" className={styles.signupButton} variant="contained">
               Login
             </Button>
           </div>

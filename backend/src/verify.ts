@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from "express"
 import jwt, { JwtPayload } from "jsonwebtoken"
+import { User } from "./models/User";
 
 const secretKey = process.env.jwt_secret
 
@@ -25,5 +26,21 @@ export const verifyJWT = async (req : CustomRequestVerify, res:Response, next:Ne
 
     }catch(err){
 
+    }
+}
+
+export const verifyProfessor = async (req:CustomRequestVerify, res: Response, next: NextFunction) => {
+
+    try{
+        const user = await User.findOne({name: req?.user});
+        if (!user) res.status(404).send("Invalid User!")
+        
+        if(user?.role === 'professor'){
+            next();
+        } else{
+            res.status(404).send("You are not allowed to do this action!");
+        }
+    }catch(err){
+        res.status(200).send(err)
     }
 }

@@ -32,8 +32,6 @@ router.post("/insert", verifyJWT, async (req: Request, res: Response) => {
       update[question] = questionData[i];
     });
 
-    console.log(update);
-
     const result = await User.updateOne(
       { enrollment: enrollment },
       { gender, ...update }
