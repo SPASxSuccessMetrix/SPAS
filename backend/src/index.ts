@@ -8,6 +8,7 @@ import authRouter from "./routes/auth"
 import questionRouter from "./routes/questions"
 import uploadRouter from "./routes/upload"
 
+
 const app = express()
 
 const allowedOrigins = ['http://localhost:5173', 'https://successmetrix.vercel.app'];
@@ -27,8 +28,9 @@ const PORT = process.env.PORT
 const mongoDBURL = process.env.MONGO_URL
 
 
-app.get("/", (req:Request, res:Response) => {
-    res.send("Backend Connected!")
+app.get("/",  (req:Request, res:Response) => {
+    res.send("Backend Connected!");
+
 })
 
 //Connect to MongoDB

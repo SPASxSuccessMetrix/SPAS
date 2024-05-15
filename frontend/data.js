@@ -58,3 +58,15 @@ export const learningPreferences = [
     "What would you rate your creative skill (if no then rate 0) on a scale of 1 - 10",
     "How often do you use methods that differ from traditional methods to solve a particular problem?"
   ];
+
+
+  export const studentProfileQuestions = [
+    "Describe your proficiency in various programming languages.",
+    "Rate your understanding of Object-Oriented Programming (OOP) concepts.",
+    "Discuss your logical problem-solving abilities.",
+    "Evaluate your communication skills, both verbal and written.",
+    "Assess your confidence in delivering presentations.",
+    "Share your experience working in team environments.",
+    "Reflect on your participation in hackathons.",
+    "Recall your involvement in various competitions."
+  ];

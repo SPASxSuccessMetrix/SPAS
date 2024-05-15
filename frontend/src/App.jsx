@@ -7,6 +7,8 @@ import Registration from "./Routes/Registration/Registration";
 import Traits from "./Routes/Traits/Traits";
 import Dashboard from "./Routes/dashboard/Dashboard";
 import Loading from "./Components/Shared/Loading/Loading";
+import StudentProfile from "./Routes/StudentProfile/studentprofile";
+import StudentProfileDashboard from "./Routes/StudentProfileDashboard/StudentProfileDashboard"
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import initialInvoke from "./InitialInvoke";
 import Login from "./Routes/Login/Login";
@@ -15,6 +17,7 @@ import { useEffect, useState } from "react";
 import { url } from "./api";
 import { CircularProgress } from "@mui/material";
 import axios from "axios";
+
 
 function App() {
   initialInvoke();
@@ -64,8 +67,10 @@ function App() {
             <Route path="/attendance" element={<Attendance />}></Route>
             <Route path="/marks" element={<Marks />}></Route>
             <Route path="/traits" element={<Traits />} />
+            <Route path="/studentprofdash" element={<StudentProfileDashboard />} />
             <Route path="/profquestion" element={<Questionnaire />} />
             <Route path="/upload" element={<Upload />} />
+            <Route path="/studentprofile" element={<StudentProfile />}></Route>
           </Routes>
         </BrowserRouter>
       )}

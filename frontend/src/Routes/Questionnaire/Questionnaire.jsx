@@ -5,6 +5,7 @@ import styles from "./questionnaire.module.css";
 import { Button } from "@mui/material";
 import axios from "axios";
 import { url } from "../../api";
+import {CircularProgress} from "@mui/material";
 
 import { learningPreferences, questions } from "../../../data";
 
@@ -20,6 +21,8 @@ const Questionnaire = () => {
   const [gender, setGender] = useState("")
   const [questionData, setQuestionData] = useState({})
   const [sec1Questions, setSec1Questions] = useState({})
+  const [loading, setLoading] = useState(false);
+
 
 
   const submitHandler = async () => {
@@ -50,9 +53,12 @@ const Questionnaire = () => {
     }
 
     try{
+      setLoading(true)
       const response = await axios.post(`${url}/questions/insert`, body, {withCredentials: true});
       alert("Data submitted successfully!")
+      setLoading(false)
     }catch(err){
+      setLoading(false)
       alert(err.response.data)
     }
   }
@@ -115,7 +121,7 @@ const Questionnaire = () => {
                   {
                     radioValues.map((value) => {
                       return (
-                        <input key={value} onChange={() => setQuestionData({...questionData, [i]: value})} type="radio" value={value} name={`question-${i}`}  />
+                        <input key={value} onChange={() => setQuestionData({...questionData, [questions[i]]: value})} type="radio" value={value} name={`question-${i}`}  />
                       )
                     })
                   }
@@ -126,6 +132,7 @@ const Questionnaire = () => {
         </div>
         <div className={styles.buttonDiv}>
         <Button onClick={submitHandler} className={styles.signupButton} variant="contained" >Submit</Button>
+        {loading && <CircularProgress style={{width: "30px", height: "30px", marginLeft: "20px"}} />}
         </div>
       </div>
     </div>

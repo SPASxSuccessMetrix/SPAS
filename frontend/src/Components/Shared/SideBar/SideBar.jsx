@@ -27,6 +27,12 @@ const SideBar = ({ heading, sideBarOpen }) => {
           Dashboard
         </p>
         <p
+          onClick={() => navigate("/studentprofdash")}
+          style={location === "/studentprofdash" ? { color: "#4D4C98" } : {}}
+        >
+          Student Profile
+        </p>
+        <p
           onClick={() => navigate("/attendance")}
           style={heading === "Attendance" ? { color: "#4D4C98" } : {}}
         >
@@ -49,6 +55,12 @@ const SideBar = ({ heading, sideBarOpen }) => {
           style={location === "/profquestion" ? { color: "#4D4C98" } : {}}
         >
           Questionairre
+        </p>
+        <p
+          onClick={() => navigate("/studentprofile")}
+          style={location === "/studentprofile" ? { color: "#4D4C98" } : {}}
+        >
+          Student Profile Questionairre
         </p>
       </div>
     </div>
