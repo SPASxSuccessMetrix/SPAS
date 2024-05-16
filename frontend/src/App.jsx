@@ -7,7 +7,7 @@ import Registration from "./Routes/Registration/Registration";
 import Traits from "./Routes/Traits/Traits";
 import Dashboard from "./Routes/dashboard/Dashboard";
 import Loading from "./Components/Shared/Loading/Loading";
-import StudentProfile from "./Routes/StudentProfile/studentprofile";
+import StudentProfile from "./Routes/StudentProfile/StudentProfile"
 import StudentProfileDashboard from "./Routes/StudentProfileDashboard/StudentProfileDashboard"
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import initialInvoke from "./InitialInvoke";
